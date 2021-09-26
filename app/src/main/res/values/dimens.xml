@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimens name="fab_margin">16dp</dimens>
+    <dimens name="acitivity_margin">16dp</dimens>
+    <dimens name="layout_margin">10dp</dimens>
+    <dimens name="item_margin">5dp</dimens>
+    <dimens name="dialog_title_font_size">24sp</dimens>
+    <dimens name="dialog_input_font_size">21sp</dimens>
+    <dimens name="list_item_font_size">21sp</dimens>
+</resources>
