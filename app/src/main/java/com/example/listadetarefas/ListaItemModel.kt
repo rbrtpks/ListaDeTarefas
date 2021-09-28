@@ -5,6 +5,8 @@ class ListaItemModel {
     var listaTexto: String? = null
     var listaData: String? = null
 
+    constructor()
+
     constructor(lista_id: Int, lista_texto: String, lista_data: String) {
         this.listaId = lista_id
         this.listaTexto = listaTexto

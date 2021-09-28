@@ -9,6 +9,29 @@ private val DB_NAME = "lista_db"
 
 class DBHelper (context: Context): SQLiteOpenHelper(context, DB_NAME, null, 1) {
 
+    val ItensList: List<ListaItemModel>
+        get() {
+            val listaItens = ArrayList<ListaItemModel>()
+            val selectQuery = "SELECT * FROM " + ListaItemModel.LISTA_TABLE_NAME +
+                    "ORDER BY " + ListaItemModel.LISTA_DATA_COLUMN + "DESC"
+            val db = this.writableDatabase
+            val cursor = db.rawQuery(selectQuery, null)
+
+            if(cursor.moveToFirst()) {
+                do {
+                    val listaItem = ListaItemModel()
+                    listaItem.listaId = cursor.getInt(cursor.getColumnIndex(ListaItemModel.LISTA_ID_COLUMN))
+                    listaItem.listaTexto = cursor.getString(cursor.getColumnIndex(ListaItemModel.LISTA_TEXT_COLUMN))
+                    listaItem.listaData = cursor.getString(cursor.getColumnIndex(ListaItemModel.LISTA_DATA_COLUMN))
+
+                    listaItens.add(listaItem)
+                } while(cursor.moveToNext())
+            }
+
+            db.close()
+            return listaItens
+        }
+
     override fun onCreate(db: SQLiteDatabase) {
         db.execSQL(ListaItemModel.CREATE_TABLE)
     }
