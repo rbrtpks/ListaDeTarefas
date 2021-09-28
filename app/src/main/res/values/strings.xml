@@ -3,4 +3,11 @@
     <string name="dialogNewTitulo">Nova Tarefa</string>
     <string name="dialogEditTitulo">Editar Tarefa</string>
     <string name="hintText">Adicione a sua Tarefa...</string>
+
+    <string name="novo">New Task</string>
+    <string name="editar">Edit Task</string>
+    <string name="atualizar">Update</string>
+    <string name="salvar">Save</string>
+    <string name="cancelar">Cancel</string>
+    <string name="toastTarefa">Add a task!</string>
 </resources>
