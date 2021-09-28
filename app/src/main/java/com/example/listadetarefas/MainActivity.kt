@@ -88,11 +88,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun deleteListaItem(position: Int) {
+        db!!.deleteListaItem(itemsList[position])
 
+        itemsList.removeAt(position)
+        mAdapter!!.notifyItemRemoved(position)
     }
 
     private fun deleteTodosItens() {
+        db!!.deleteTodosListaItem()
 
+        itemsList.removeAll(itemsList)
+        mAdapter!!.notifyDataSetChanged()
     }
 
     private fun showDialog(isUpdate: Boolean, listaItemModel: ListaItemModel?, position: Int) {

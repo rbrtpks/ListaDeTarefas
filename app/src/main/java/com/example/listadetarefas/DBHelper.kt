@@ -74,12 +74,29 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, 1) {
 
         val listaItem = ListaItemModel(
             cursor!!.getInt(cursor.getColumnIndex(ListaItemModel.LISTA_ID_COLUMN)),
-            cursor.getString (cursor.getColumnIndex(ListaItemModel.LISTA_TEXT_COLUMN)),
-            cursor.getString (cursor.getColumnIndex(ListaItemModel.LISTA_DATA_COLUMN))
+            cursor.getString(cursor.getColumnIndex(ListaItemModel.LISTA_TEXT_COLUMN)),
+            cursor.getString(cursor.getColumnIndex(ListaItemModel.LISTA_DATA_COLUMN))
         )
 
         cursor.close()
         return listaItem
     }
 
+    fun deleteListaItem(listaItemModel: ListaItemModel) {
+        val db = this.writableDatabase
+        db.delete(
+            ListaItemModel.LISTA_TABLE_NAME, ListaItemModel.LISTA_ID_COLUMN + " = ?",
+            arrayOf(listaItemModel.listaId.toString())
+        )
+        db.close()
+    }
+
+    fun deleteTodosListaItem() {
+        val db = this.writableDatabase
+        db.delete(
+            ListaItemModel.LISTA_TABLE_NAME, ListaItemModel.LISTA_ID_COLUMN + " > ?",
+            arrayOf("0")
+        )
+        db.close()
+    }
 }
