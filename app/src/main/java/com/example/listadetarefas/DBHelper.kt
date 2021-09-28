@@ -13,7 +13,7 @@ class DBHelper (context: Context): SQLiteOpenHelper(context, DB_NAME, null, 1) {
         get() {
             val listaItens = ArrayList<ListaItemModel>()
             val selectQuery = "SELECT * FROM " + ListaItemModel.LISTA_TABLE_NAME +
-                    "ORDER BY " + ListaItemModel.LISTA_DATA_COLUMN + "DESC"
+                    " ORDER BY " + ListaItemModel.LISTA_DATA_COLUMN + " DESC"
             val db = this.writableDatabase
             val cursor = db.rawQuery(selectQuery, null)
 
@@ -37,7 +37,7 @@ class DBHelper (context: Context): SQLiteOpenHelper(context, DB_NAME, null, 1) {
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        db.execSQL("DROP TABLE IF EXISTS" + ListaItemModel.LISTA_TABLE_NAME)
+        db.execSQL("DROP TABLE IF EXISTS " + ListaItemModel.LISTA_TABLE_NAME)
 
         onCreate(db)
     }

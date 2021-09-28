@@ -23,9 +23,9 @@ class ListaItemModel {
         val CREATE_TABLE = (
             "CREATE TABLE "
                 + LISTA_TABLE_NAME + "("
-                + LISTA_ID_COLUMN + "INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + LISTA_TEXT_COLUMN + "TEXT, "
-                + LISTA_DATA_COLUMN + "DATETIME DEFAULT CURRENT_TIMESTAMP"
+                + LISTA_ID_COLUMN + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + LISTA_TEXT_COLUMN + " TEXT, "
+                + LISTA_DATA_COLUMN + " DATETIME DEFAULT CURRENT_TIMESTAMP"
                 + ")"
         )
     }
