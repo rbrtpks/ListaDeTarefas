@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Lista de Tareas</string>
+    <string name="dialogNewTitulo">Nueva tarea</string>
+    <string name="dialogEditTitulo">Editar tarea</string>
+    <string name="hintText">Agregue su tarea...</string>
+
+    <string name="novo">Nueva tarea</string>
+    <string name="editar">Editar tarea</string>
+    <string name="atualizar">Actualización</string>
+    <string name="salvar">Guardar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="toastTarefa">Añadir una tarea!</string>
+
+    <string name="excluir">Eliminar tarea</string>
+    <string name="excluirTudo">Eliminar todas las tareas</string>
+    <string name="tituloOpcao">Elige una opción</string>
+    <string name="toastErro">Error al cargar la acción</string>
+</resources>

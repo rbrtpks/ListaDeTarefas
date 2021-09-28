@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">Lista de Tarefas</string>
-    <string name="dialogNewTitulo">Nova Tarefa</string>
-    <string name="dialogEditTitulo">Editar Tarefa</string>
-    <string name="hintText">Adicione a sua Tarefa...</string>
+    <string name="app_name">Task List</string>
+    <string name="dialogNewTitulo">New task</string>
+    <string name="dialogEditTitulo">Edit Task</string>
+    <string name="hintText">Add your Task...</string>
 
     <string name="novo">New Task</string>
     <string name="editar">Edit Task</string>
