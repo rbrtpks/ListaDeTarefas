@@ -99,4 +99,16 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, 1) {
         )
         db.close()
     }
+
+    fun updateListaItem(listaItemModel: ListaItemModel): Int {
+        val db = this.writableDatabase
+
+        val values = ContentValues()
+        values.put(ListaItemModel.LISTA_TEXT_COLUMN, listaItemModel.listaTexto)
+
+        return db.update(
+            ListaItemModel.LISTA_TABLE_NAME, values, ListaItemModel.LISTA_ID_COLUMN + " = ?",
+            arrayOf(listaItemModel.listaId.toString())
+        )
+    }
 }

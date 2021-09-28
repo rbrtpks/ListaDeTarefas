@@ -76,11 +76,15 @@ class MainActivity : AppCompatActivity() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle(getString(R.string.tituloOpcao))
         builder.setItems(options) { dialog, itemIndex ->
-            when(itemIndex) {
+            when (itemIndex) {
                 0 -> showDialog(true, itemsList[position], position)
                 1 -> deleteListaItem(position)
                 2 -> deleteTodosItens()
-                else -> Toast.makeText(applicationContext, getString(R.string.toastErro), Toast.LENGTH_SHORT).show()
+                else -> Toast.makeText(
+                    applicationContext,
+                    getString(R.string.toastErro),
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
 
@@ -113,6 +117,10 @@ class MainActivity : AppCompatActivity() {
         val titulo = view.findViewById<TextView>(R.id.dialogTitle)
         titulo.text = if (!isUpdate) getString(R.string.novo) else getString(R.string.editar)
 
+        if (isUpdate && listaItemModel != null) {
+            input.setText(listaItemModel!!.listaTexto)
+        }
+
         userInput
             .setCancelable(false)
             .setPositiveButton(if (isUpdate) getString(R.string.atualizar) else getString(R.string.salvar)) { dialogBox, id -> }
@@ -133,8 +141,21 @@ class MainActivity : AppCompatActivity() {
                 alertDialog.dismiss()
             }
 
-            createListaItem(input.text.toString())
+            if (isUpdate && listaItemModel != null) {
+                updateListaItem(input.text.toString(), position)
+            } else {
+                createListaItem(input.text.toString())
+            }
         })
+    }
+
+    private fun updateListaItem(listaTexto: String, position: Int) {
+        val item = itemsList[position]
+        item.listaTexto = (listaTexto)
+        db!!.updateListaItem(item)
+
+        itemsList[position] = item
+        mAdapter!!.notifyItemChanged(position)
     }
 
     private fun createListaItem(listaText: String) {
