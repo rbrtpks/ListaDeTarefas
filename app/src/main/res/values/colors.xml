@@ -11,7 +11,7 @@
     <color name="colorPrimary">#078c03</color>
     <color name="colorPrimaryDark">#055902</color>
     <color name="colorAccent">#2ecc71</color>
-    <color name="colorBackground">#22dadada</color>
+    <color name="colorBackground">#dadada</color>
     <color name="colorPrimaryText">#ffffff</color>
     <color name="colorPrimaryTextDark">#000000</color>
 </resources>

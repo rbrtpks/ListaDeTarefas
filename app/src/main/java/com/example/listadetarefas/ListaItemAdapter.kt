@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import java.text.ParseException
 import java.text.SimpleDateFormat
 
-class ListaItemAdapter(private val context: Context, private val itensList: List<ListaItemModel>) : RecyclerView.Adapter<ListaItemAdapter.ViewHolder>() {
+class ListaItemAdapter(private val context: Context, private val itensList: List<ListaItemModel>) :RecyclerView.Adapter<ListaItemAdapter.ViewHolder>() {
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         var listaTexto : TextView = view.findViewById(R.id.texto)

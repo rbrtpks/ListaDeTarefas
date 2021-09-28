@@ -9,8 +9,8 @@ class ListaItemModel {
 
     constructor(lista_id: Int, lista_texto: String, lista_data: String) {
         this.listaId = lista_id
-        this.listaTexto = listaTexto
-        this.listaData = listaData
+        this.listaTexto = lista_texto
+        this.listaData = lista_data
     }
 
     companion object {
@@ -21,12 +21,11 @@ class ListaItemModel {
         val LISTA_DATA_COLUMN = "listaData"
 
         val CREATE_TABLE = (
-            "CREATE TABLE "
-                + LISTA_TABLE_NAME + "("
-                + LISTA_ID_COLUMN + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + LISTA_TEXT_COLUMN + " TEXT, "
-                + LISTA_DATA_COLUMN + " DATETIME DEFAULT CURRENT_TIMESTAMP"
-                + ")"
-        )
+                "CREATE TABLE "
+                        + LISTA_TABLE_NAME + "("
+                        + LISTA_ID_COLUMN + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                        + LISTA_TEXT_COLUMN + " TEXT, "
+                        + LISTA_DATA_COLUMN + " DATETIME DEFAULT CURRENT_TIMESTAMP"
+                        + ")")
     }
 }
