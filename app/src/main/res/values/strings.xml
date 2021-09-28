@@ -10,4 +10,9 @@
     <string name="salvar">Save</string>
     <string name="cancelar">Cancel</string>
     <string name="toastTarefa">Add a task!</string>
+
+    <string name="excluir">Delete Task</string>
+    <string name="excluirTudo">Delete All Tasks</string>
+    <string name="tituloOpcao">Choose an Option</string>
+    <string name="toastErro">Error loading action</string>
 </resources>

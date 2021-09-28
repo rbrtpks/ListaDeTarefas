@@ -54,9 +54,48 @@ class MainActivity : AppCompatActivity() {
         recyclerView!!.layoutManager = mLayoutManager
         recyclerView!!.itemAnimator = DefaultItemAnimator()
         recyclerView!!.adapter = mAdapter
+
+        //Função de Clique
+        recyclerView!!.addOnItemTouchListener(ItemLongPressListener(this,
+            recyclerView!!, object : ItemLongPressListener.ClickListener {
+                override fun onClick(view: View, position: Int) {}
+
+                override fun onLongClick(view: View?, position: Int) {
+                    showActionsDialog(position)
+                }
+            }
+        ))
     }
 
-    private fun showDialog(isUpdate: Boolean, nothing: Nothing?, position: Int) {
+    private fun showActionsDialog(position: Int) {
+        val options = arrayOf<CharSequence>(
+            getString(R.string.editar),
+            getString(R.string.excluir),
+            getString(R.string.excluirTudo)
+        )
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle(getString(R.string.tituloOpcao))
+        builder.setItems(options) { dialog, itemIndex ->
+            when(itemIndex) {
+                0 -> showDialog(true, itemsList[position], position)
+                1 -> deleteListaItem(position)
+                2 -> deleteTodosItens()
+                else -> Toast.makeText(applicationContext, getString(R.string.toastErro), Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        builder.show()
+    }
+
+    private fun deleteListaItem(position: Int) {
+
+    }
+
+    private fun deleteTodosItens() {
+
+    }
+
+    private fun showDialog(isUpdate: Boolean, listaItemModel: ListaItemModel?, position: Int) {
 
         val layoutInflaterAndroid = LayoutInflater.from(applicationContext)
         val view = layoutInflaterAndroid.inflate(R.layout.lista_dialog, null)
@@ -70,15 +109,19 @@ class MainActivity : AppCompatActivity() {
 
         userInput
             .setCancelable(false)
-            .setPositiveButton(if(isUpdate) getString(R.string.atualizar) else getString(R.string.salvar)) {dialogBox, id ->}
-            .setNegativeButton(getString(R.string.cancelar)) {dialogBox, id -> dialogBox.cancel()}
+            .setPositiveButton(if (isUpdate) getString(R.string.atualizar) else getString(R.string.salvar)) { dialogBox, id -> }
+            .setNegativeButton(getString(R.string.cancelar)) { dialogBox, id -> dialogBox.cancel() }
 
         val alertDialog = userInput.create()
         alertDialog.show()
 
         alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(View.OnClickListener {
-            if(TextUtils.isEmpty(input.text.toString())) {
-                Toast.makeText(this@MainActivity, getString(R.string.toastTarefa), Toast.LENGTH_LONG).show()
+            if (TextUtils.isEmpty(input.text.toString())) {
+                Toast.makeText(
+                    this@MainActivity,
+                    getString(R.string.toastTarefa),
+                    Toast.LENGTH_LONG
+                ).show()
                 return@OnClickListener
             } else {
                 alertDialog.dismiss()
@@ -92,7 +135,7 @@ class MainActivity : AppCompatActivity() {
         val item = db!!.insertListaItem(listaText)
         val novoItem = db!!.getListaItem(item)
 
-        if(novoItem != null) {
+        if (novoItem != null) {
             itemsList.add(0, novoItem)
             mAdapter!!.notifyDataSetChanged()
         }
